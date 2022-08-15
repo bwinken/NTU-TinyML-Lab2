@@ -60,58 +60,34 @@ $ bash ./test_performance.sh <SEED> DISCO_H747I GCC_ARM
 ```
 The random seed could be any integer greater than 0. After building, the console would show the compiling details like this:
 
-![](https://i.imgur.com/pDBBJrL.png)
+
+<p align="center">
+    <img src=https://i.imgur.com/pDBBJrL.png>
+</p>
 
 
 
 
 
 
+### Copy the binary file onto board
 
-### Compile 
-```
-$ cd tensorflow/lite/micro/tools/make/gen/mbed_cortex-m4_default/prj/hello_world/mbed
-```
-1. To compile, run:
-    ```
-    $ mbed toolchain GCC_ARM
-    ```
-    ```
-    $ mbed target DISCO_H747I
-    ```
-    ```
-    $ mbed compile -c
-    ```
-2. This will produce a file named `mbed.bin` in `~/Lab1/tensorflow/tensorflow/lite/micro/tools/make/gen/mbed_cortex-m4_default/prj/hello_world/mbed/BUILD/DISCO_H747I/GCC_ARM/`. To flash it to the board, copy the file to the volume mounted as a USB drive. For instance:\
-```
-$ cp /BUILD/DISCO_H747I/GCC_ARM/mbed.bin /media/<USER>/<BOARD_NAME>/
-```
-3. Download Tera Term and Connect with STM32 to see the performance.
-
-![image](https://user-images.githubusercontent.com/61946472/184304013-0ff3c1b5-54e8-48c6-80d4-f906618e994b.png)
-
-
-## TODO: Cosine predictor
-1. Find `train_hello_world_model.ipynb` in `~/Lab1/tensorflow/tensorflow/lite/micro/examples/hello_world/train`
-2. modify code to cosine predictor, and replace model.cc
-3. Replace `hello_world_test.cc`provide in our Lab1 Github: 
-4. Run the following command to bulid:
-```
-$ make -f tensorflow/lite/micro/tools/make/Makefile test_hello_world_test
-```
-![image](https://user-images.githubusercontent.com/61946472/184305590-2018128a-3bb1-477e-8605-4c4e1c370fc0.png)
-
-
-## (Optional) Control LCD on STM32H747I
-1. Put `BSP` in
-    `~/Lab1/tensorflow/tensorflow/lite/micro/tools/make/gen/mbed_cortex-m4_default/prj/hello_world/mbed/`
+This should result in a binary file `mbed-tflm-image-recognition.bin` at the following path:\
+`cmake_build/DISCO_H747I/release/GCC_ARM/mbed-tflm-image-recognition.bin`
     
-2. Put `LCD_DISCO_F746NG.cpp` and `LCD_DISCO_F746NG.h`in
-    `~/Lab1/tensorflow/tensorflow/lite/micro/tools/make/gen/mbed_cortex-m4_default/prj/hello_world/mbed/tensorflow/lite/micro/examples/hello_world/`
+Copy the binary file onto the board, and download Tera-Term to see the performance. Inference stage contains three parts:
 
-3. Replace `output_handler.cc` in
-     `~/Lab1/tensorflow/tensorflow/lite/micro/tools/make/gen/mbed_cortex-m4_default/prj/hello_world/mbed/tensorflow/lite/micro/examples/hello_world/output_handler.cc`
+1. For every iteration, it will show the number of ticks used in each layer.
+
+![](https://i.imgur.com/F7boGv8.png)
+
+2. After passing through the whole model, it would compute a total number of ticks and time.
+
+![](https://i.imgur.com/WawCR45.png)
+
+3. After all 50 images are tested, it would show the accuracy of the model.
+
+![](https://i.imgur.com/gUMKICs.png)
 
 
-![DEMO (1)](https://user-images.githubusercontent.com/61946472/184305251-4078c8db-0e00-40ec-99aa-c12b2b47af31.gif)
 
