@@ -51,7 +51,10 @@ You cna run modified '747setup.sh' to setup the building environment or write fi
 $ bash ./747setup.sh
 ```
 
-
+### Modify files
+- `main.cpp`          (in ./image_recognition)
+- `display_util.cc`   (in ./image_recognition/stm32f747_discovery)
+- `image_provider.cc` (in ./image_recognition/stm32f747_discovery)
 ### Run Inference
 
 In inference stage, we use the Mbed CLI2 which uses Ninja as a build system, and CMake to generate the build environment.
@@ -60,14 +63,9 @@ $ bash ./test_performance.sh <SEED> DISCO_H747I GCC_ARM
 ```
 The random seed could be any integer greater than 0. After building, the console would show the compiling details like this:
 
-
 <p align="center">
     <img src=https://i.imgur.com/pDBBJrL.png>
 </p>
-
-
-
-
 
 
 ### Copy the binary file onto board
@@ -78,16 +76,18 @@ This should result in a binary file `mbed-tflm-image-recognition.bin` at the fol
 Copy the binary file onto the board, and download Tera-Term to see the performance. Inference stage contains three parts:
 
 1. For every iteration, it will show the number of ticks used in each layer.
-
-![](https://i.imgur.com/F7boGv8.png)
-
+<p align="center">
+    <img src=https://i.imgur.com/F7boGv8.png>
+</p>
 2. After passing through the whole model, it would compute a total number of ticks and time.
-
-![](https://i.imgur.com/WawCR45.png)
-
+<p align="center">
+    <img src=https://i.imgur.com/WawCR45.png>
+</p>
 3. After all 50 images are tested, it would show the accuracy of the model.
+<p align="center">
+    <img src=https://i.imgur.com/gUMKICs.png>
+</p>
 
-![](https://i.imgur.com/gUMKICs.png)
 
 
 
