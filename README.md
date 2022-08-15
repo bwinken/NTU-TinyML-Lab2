@@ -21,6 +21,12 @@ $ sudo apt-get install gcc-arm-none-eabi
 ```
 $ sudo apt-get install ninja-build
 ``` 
+4. Required packages are in requirements.txt. 
+```
+$ git config --global user.name <your name> 
+$ git config --global user.email <your email>
+```
+We need to clone some packages from git, so need to set the configuration.
 
 ### Git Pack Download
 Downloaded file would be stored in folder named `Lab2`
@@ -37,63 +43,29 @@ $ cd ML-examples/tflm-cmsisnn-mbed-image-recognition![image](https://user-images
 ```
 
 
-## Build on PC
-With this command, some necessary libraries and tools will be downloaded. Then test file along with all of its dependencies will be built. Makefile has instructed the C++ compiler to build the code and create a binary, which it will then run. The result should be like this:
-    
-```
-$ make -f tensorflow/lite/micro/tools/make/Makefile test_hello_world_test
-```
-![image](https://user-images.githubusercontent.com/61946472/184302778-aa919659-94e0-4ce2-9385-87acc595cee3.png)
+### Setup
+Since the package is for STM32F746NG, we need to do some modification on 'setup.sh' to download the right BSPs. Also, several header files need to include the support functions to STM32H747I.
 
-
-
-## Deploy on STM32H747
-Mbed requires source files to be structured in a certain way. The TensorFlow Lite for Microcontrollers Makefile knows how to do this for us, and can generate a directory suitable for Mbed. The building process should be like this:
+You cna run modified '747setup.sh' to setup the building environment or write files on yourself.
 ```
-$ make -f tensorflow/lite/micro/tools/make/Makefile TARGET=mbed OPTIMIZED_KERNEL_DIR=cmsis_nn generate_hello_world_mbed_project
-```
-<!--
-![](https://i.imgur.com/tENEHNF.png)
--->
-The directory below contains all of the example’s dependencies structured in the correct way for Mbed to be able to build it.
-```
-$ cd tensorflow/lite/micro/tools/make/gen/mbed_cortex-m4_default/prj/hello_world/mbed
+$ bash ./747setup.sh
 ```
 
 
-### Setting up Mbed
-To get started, use the following command to specify to Mbed that the current directory is the root of an Mbed project:
+### Run Inference
 
+In inference stage, we use the Mbed CLI2 which uses Ninja as a build system, and CMake to generate the build environment.
 ```
-$ mbed config root .
+$ bash ./test_performance.sh <SEED> DISCO_H747I GCC_ARM
 ```
-Next, instruct Mbed to download the dependencies and prepare to build:
+The random seed could be any integer greater than 0. After building, the console would show the compiling details like this:
 
-```
-$ mbed deploy
-```
-<!--
-### Modify Mbed Configuration
+![](https://i.imgur.com/pDBBJrL.png)
 
-By default, Mbed will build the project using C++ 98. However, TensorFlow Lite requires C++ 11. Run the following Python snippet to modify the Mbed configuration files so that it uses C++ 11. You should put `modify.py` in `tensorflow/lite/micro/tools/make/gen/mbed_cortex-m4_default/prj/hello_world/mbed` and enter the command:
 
-`$ python3 modify.py`
--->
 
-### Modify header files
 
-Replication arm_math.h and cmsis_gcc.h to correct folder.
 
-```
-$ cd ~/Lab1/tensorflow/
-```
-
-```
-$ cp tensorflow/lite/micro/tools/make/downloads/cmsis/CMSIS/DSP/Include/arm_math.h  tensorflow/lite/micro/tools/make/gen/mbed_cortex m4_default/prj/hello_world/mbed/mbed-os/cmsis/TARGET_CORTEX_M/arm_math.h
-```
-```
-$ cp tensorflow/lite/micro/tools/make/downloads/cmsis/CMSIS/Core/Include/cmsis_gcc.h  tensorflow/lite/micro/tools/make/gen/mbed_cortex-m4_default/prj/hello_world/mbed/mbed-os/cmsis/TARGET_CORTEX_M/cmsis_gcc.h
-```
 
 
 ### Compile 
