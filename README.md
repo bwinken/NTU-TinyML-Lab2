@@ -8,39 +8,47 @@ In LAB2, we deploy a pretrained image recognition model onto STM32H747. The inpu
 - gcc-arm-none-eabi==9.2.1
 
 1. Install [mbed-tools](https://os.mbed.com/docs/mbed-os/v6.15/build-tools/install-and-set-up.html) by pip :
-```
-$ pip install mbed-tools
-```
+   
+   ```
+    $ pip install mbed-tools
+    ```
 
 2. Install [GCC_ARM](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/downloads) by :
-```
-$ sudo apt-get install gcc-arm-none-eabi
-```
+
+    ```
+    $ sudo apt-get install gcc-arm-none-eabi
+    ```
 
 3. Install [Ninja](https://installati.one/ubuntu/20.04/ninja-build/) by :
-```
-$ sudo apt-get install ninja-build
-``` 
-4. Required packages are in requirements.txt. 
-```
-$ git config --global user.name <your name> 
-$ git config --global user.email <your email>
-```
+
+    ```
+    $ sudo apt-get install ninja-build
+    ``` 
+
+### Setting git config 
+1. Required packages are in requirements.txt. 
+2. 
+    ```
+    $ git config --global user.name <your name> 
+    $ git config --global user.email <your email>
+    ```
 We need to clone some packages from git, so need to set the configuration.
 
-### Git Pack Download
-Downloaded file would be stored in folder named `Lab2`
+### Download Package
+1. Create folder named `Lab2`
 
-```
-$ mkdir Lab2
-$ cd Lab2
-```
-```
-$ git clone https://github.com/ARM-software/ML-examples.git
-```
-```
-$ cd ML-examples/tflm-cmsisnn-mbed-image-recognition![image](https://user-images.githubusercontent.com/61946472/184610428-0d3f5d29-8f8c-4791-87ab-bb769d478d96.png)
-```
+    ```
+    $ mkdir Lab2
+    $ cd Lab2
+    ```
+2. Downloaded file from github : 
+
+    ```
+    $ git clone https://github.com/ARM-software/ML-examples.git
+    ```
+    ```
+    $ cd ML-examples/tflm-cmsisnn-mbed-image-recognition![image](https://user-images.githubusercontent.com/61946472/184610428-0d3f5d29-8f8c-4791-87ab-bb769d478d96.png)
+    ```
 
 
 ### Setup
@@ -55,6 +63,28 @@ $ bash ./747setup.sh
 - `main.cpp`          (in ./image_recognition)
 - `display_util.cc`   (in ./image_recognition/stm32f747_discovery)
 - `image_provider.cc` (in ./image_recognition/stm32f747_discovery)
+1. `main.cpp` (Line21)
+
+    ```
+    #include "mbed-os/targets/TARGET_STM/TARGET_STM32H7/STM32Cube_FW/STM32H7xx_HAL_Driver/stm32h7xx_hal.h"
+    ```
+2. `display_util.cc`
+
+    ```
+    (Line27-30) Change variable : hDcmiHandler ->hdcmi_discovery`
+    (Line23)  #include  "BSP/Drivers/BSP/STM32H747I-Discovery/stm32h747i_discovery_lcd.h"
+    ```
+3. `image_provider.cc` (Line 21)
+    
+    ```
+    #include "BSP/Drivers/BSP/STM32H747I-Discovery/stm32h747i_discovery_camera.h"
+    ```
+
+
+
+
+
+
 ### Run Inference
 
 In inference stage, we use the Mbed CLI2 which uses Ninja as a build system, and CMake to generate the build environment.
