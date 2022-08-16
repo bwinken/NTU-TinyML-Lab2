@@ -27,7 +27,7 @@ In LAB2, we deploy a pretrained image recognition model onto STM32H747. The inpu
 
 ### Setting git config 
 1. Required packages are in requirements.txt. 
-2. 
+
     ```
     $ git config --global user.name <your name> 
     $ git config --global user.email <your email>
@@ -54,19 +54,20 @@ We need to clone some packages from git, so need to set the configuration.
 ### Setup
 Since the package is for STM32F746NG, we need to do some modification on 'setup.sh' to download the right BSPs. Also, several header files need to include the support functions to STM32H747I.
 
-You cna run modified '747setup.sh' to setup the building environment or write files on yourself.
-```
-$ bash ./747setup.sh
-```
+1. You cna run modified '747setup.sh' to setup the building environment or write files on yourself.
+
+   ```
+   $ bash ./747setup.sh
+   ```
 
 ### Modify files
 - `main.cpp`          (in ./image_recognition)
 - `display_util.cc`   (in ./image_recognition/stm32f747_discovery)
 - `image_provider.cc` (in ./image_recognition/stm32f747_discovery)
-1. `main.cpp` (Line21)
+1. `main.cpp` 
 
     ```
-    #include "mbed-os/targets/TARGET_STM/TARGET_STM32H7/STM32Cube_FW/STM32H7xx_HAL_Driver/stm32h7xx_hal.h"
+    (Line21) #include "mbed-os/targets/TARGET_STM/TARGET_STM32H7/STM32Cube_FW/STM32H7xx_HAL_Driver/stm32h7xx_hal.h"
     ```
 2. `display_util.cc`
 
@@ -74,23 +75,19 @@ $ bash ./747setup.sh
     (Line27-30) Change variable : hDcmiHandler ->hdcmi_discovery`
     (Line23)  #include  "BSP/Drivers/BSP/STM32H747I-Discovery/stm32h747i_discovery_lcd.h"
     ```
-3. `image_provider.cc` (Line 21)
+3. `image_provider.cc` 
     
     ```
-    #include "BSP/Drivers/BSP/STM32H747I-Discovery/stm32h747i_discovery_camera.h"
+    (Line21) #include "BSP/Drivers/BSP/STM32H747I-Discovery/stm32h747i_discovery_camera.h"
     ```
-
-
-
-
-
 
 ### Run Inference
 
-In inference stage, we use the Mbed CLI2 which uses Ninja as a build system, and CMake to generate the build environment.
-```
-$ bash ./test_performance.sh <SEED> DISCO_H747I GCC_ARM
-```
+1. In inference stage, we use the Mbed CLI2 which uses Ninja as a build system, and CMake to generate the build environment.
+
+   ```
+   $ bash ./test_performance.sh <SEED> DISCO_H747I GCC_ARM
+   ```
 The random seed could be any integer greater than 0. After building, the console would show the compiling details like this:
 
 <p align="center">
