@@ -41,7 +41,7 @@ We need to clone some packages from git, so need to set the configuration.
     $ mkdir Lab2
     $ cd Lab2
     ```
-2. Downloaded file from github : 
+2. Downloaded files from github : 
 
     ```
     $ git clone https://github.com/ARM-software/ML-examples.git
