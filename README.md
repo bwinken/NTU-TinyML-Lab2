@@ -44,10 +44,10 @@ We need to clone some packages from git, so need to set the configuration.
 2. Downloaded files from github : 
 
     ```
-    $ git clone https://github.com/ARM-software/ML-examples.git
+    $ git clone https://github.com/bwinken/NTU-TinyML-Lab2.git
     ```
     ```
-    $ cd ML-examples/tflm-cmsisnn-mbed-image-recognition
+    $ cd NTU-TinyML-Lab2/LAB2
     ```
 
 
