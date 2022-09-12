@@ -35,13 +35,7 @@ In LAB2, we deploy a pretrained image recognition model onto STM32H747. The inpu
 We need to clone some packages from git, so need to set the configuration.
 
 ### Download Package
-1. Create folder named `Lab2`
-
-    ```
-    $ mkdir Lab2
-    $ cd Lab2
-    ```
-2. Downloaded files from github : 
+1. Downloaded files from github : 
 
     ```
     $ git clone https://github.com/bwinken/NTU-TinyML-Lab2.git
