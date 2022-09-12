@@ -47,7 +47,7 @@ We need to clone some packages from git, so need to set the configuration.
     $ git clone https://github.com/ARM-software/ML-examples.git
     ```
     ```
-    $ cd ML-examples/tflm-cmsisnn-mbed-image-recognition![image](https://user-images.githubusercontent.com/61946472/184610428-0d3f5d29-8f8c-4791-87ab-bb769d478d96.png)
+    $ cd ML-examples/tflm-cmsisnn-mbed-image-recognition
     ```
 
 
