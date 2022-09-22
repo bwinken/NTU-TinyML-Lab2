@@ -81,11 +81,17 @@ Since the package is for STM32F746NG, we need to do some modification on 'setup.
     ```
 
 ### Run Inference
+To run a test, execute
+$ ./test_performance.sh <SEED> <TARGET> <TOOLCHAIN>,
+where the <SEED> is any integer >= 0, <TARGET> is an mbed-enabled device such as DISCO_F746NG, and <TOOLCHAIN> is GCC_ARM or ARM. Running the command with the same seed will test the same set of images.
 
-1. In inference stage, we use the Mbed CLI2 which uses Ninja as a build system, and CMake to generate the build environment.
+
+1. In inference stage, we use the Mbed CLI2 which uses Ninja as a build system, and CMake to generate the build environment. To run a test, execute
+`$ ./test_performance.sh <SEED> <TARGET> <TOOLCHAIN>`,
+where the `<SEED>` is any integer >= 0, `<TARGET>` is an mbed-enabled device such as `DISCO_H747I`, and `<TOOLCHAIN>` is `GCC_ARM` or `ARM`. Running the command with the same seed will test the same set of images.
 
    ```
-   $ bash ./test_performance.sh <SEED> DISCO_H747I GCC_ARM
+   $ bash ./test_performance.sh 0 DISCO_H747I GCC_ARM
    ```
 The random seed could be any integer greater than 0. After building, the console would show the compiling details like this:
 
