@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
     return 1;
   }
 
-  /*tflite::MicroMutableOpResolver<8> micro_op_resolver;
+  tflite::MicroMutableOpResolver<10> micro_op_resolver;
 
   micro_op_resolver.AddConv2D();
   micro_op_resolver.AddStridedSlice();
@@ -55,11 +55,10 @@ int main(int argc, char** argv) {
   micro_op_resolver.AddPad();
   micro_op_resolver.AddAveragePool2D();
   micro_op_resolver.AddReshape();
-   */
-
-  tflite::AllOpsResolver resolver;
-
-  tflite::MicroInterpreter interpreter(model, resolver, tensor_arena,
+  micro_op_resolver.AddMaxPool2D();
+  micro_op_resolver.AddFullyConnected();
+   
+  tflite::MicroInterpreter interpreter(model, micro_op_resolver, tensor_arena,
                                       tensor_arena_size,
                                       &micro_error_reporter,
                                       &micro_profiler
