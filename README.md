@@ -47,8 +47,13 @@ We need to clone some packages from git, so need to set the configuration.
 
 ### Setup
 Since the package is for STM32F746NG, we need to do some modification on 'setup.sh' to download the right BSPs. Also, several header files need to include the support functions to STM32H747I.
+1. Add executable permission
+   ```
+   $ chmod u+x clean.sh
+   $ chmod u+x generate_cmake_files.sh
+   ```
 
-1. You cna run copy `747setup.sh` in `NTU-TinyML-Lab2/LAB2` to setup the building environment or write `setup.sh` file on yourself.
+2. You cna run copy `747setup.sh` in `NTU-TinyML-Lab2/LAB2` to setup the building environment or write `setup.sh` file on yourself.
 
    ```
    $ bash ./747setup.sh
@@ -56,8 +61,8 @@ Since the package is for STM32F746NG, we need to do some modification on 'setup.
 
 ### Modify files
 - `main.cpp`          (in ./image_recognition)
-- `display_util.cc`   (in ./image_recognition/stm32f747_discovery)
-- `image_provider.cc` (in ./image_recognition/stm32f747_discovery)
+- `display_util.cc`   (in ./image_recognition/stm32f746_discovery)
+- `image_provider.cc` (in ./image_recognition/stm32f746_discovery)
 1. `main.cpp` 
 
     ```
