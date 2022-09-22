@@ -22,6 +22,7 @@ rm -rf tflite-micro
 rm -rf tensorflow
 rm -rf mbed-os
 rm -rf BSP
+rm -rf BSP_DISCO_H747I
 rm -f test_batch.bin
 rm -f image_recognition/50_cifar_images.h
 rm -rf cmake_build
