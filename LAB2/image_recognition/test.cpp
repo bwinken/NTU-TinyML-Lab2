@@ -20,6 +20,7 @@
 #include "image_recognition/50_cifar_images.h"
 #include "image_recognition/image_recognition_model.h"
 #include "image_recognition/util.h"
+#include "tensorflow/lite/micro/all_ops_resolver.h"
 #include "tensorflow/lite/micro/micro_error_reporter.h"
 #include "tensorflow/lite/micro/micro_interpreter.h"
 #include "tensorflow/lite/micro/micro_mutable_op_resolver.h"
@@ -44,7 +45,7 @@ int main(int argc, char** argv) {
     return 1;
   }
 
-  tflite::MicroMutableOpResolver<8> micro_op_resolver;
+  /*tflite::MicroMutableOpResolver<8> micro_op_resolver;
 
   micro_op_resolver.AddConv2D();
   micro_op_resolver.AddStridedSlice();
@@ -54,8 +55,11 @@ int main(int argc, char** argv) {
   micro_op_resolver.AddPad();
   micro_op_resolver.AddAveragePool2D();
   micro_op_resolver.AddReshape();
+   */
 
-  tflite::MicroInterpreter interpreter(model, micro_op_resolver, tensor_arena,
+  tflite::AllOpsResolver resolver;
+
+  tflite::MicroInterpreter interpreter(model, resolver, tensor_arena,
                                       tensor_arena_size,
                                       &micro_error_reporter,
                                       &micro_profiler
