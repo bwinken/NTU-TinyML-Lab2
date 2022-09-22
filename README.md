@@ -48,7 +48,7 @@ We need to clone some packages from git, so need to set the configuration.
 ### Setup
 Since the package is for STM32F746NG, we need to do some modification on 'setup.sh' to download the right BSPs. Also, several header files need to include the support functions to STM32H747I.
 
-1. You cna run copy `747setup.sh` in `NTU-TinyML-Lab2/` to setup the building environment or write `setup.sh` file on yourself.
+1. You cna run copy `747setup.sh` in `NTU-TinyML-Lab2/LAB2` to setup the building environment or write `setup.sh` file on yourself.
 
    ```
    $ bash ./747setup.sh
