@@ -81,11 +81,6 @@ Since the package is for STM32F746NG, we need to do some modification on 'setup.
     ```
 
 ### Run Inference
-To run a test, execute
-$ ./test_performance.sh <SEED> <TARGET> <TOOLCHAIN>,
-where the <SEED> is any integer >= 0, <TARGET> is an mbed-enabled device such as DISCO_F746NG, and <TOOLCHAIN> is GCC_ARM or ARM. Running the command with the same seed will test the same set of images.
-
-
 1. In inference stage, we use the Mbed CLI2 which uses Ninja as a build system, and CMake to generate the build environment. To run a test, execute
 `$ ./test_performance.sh <SEED> <TARGET> <TOOLCHAIN>`,
 where the `<SEED>` is any integer >= 0, `<TARGET>` is an mbed-enabled device such as `DISCO_H747I`, and `<TOOLCHAIN>` is `GCC_ARM` or `ARM`. Running the command with the same seed will test the same set of images.
@@ -109,17 +104,16 @@ Copy the binary file onto the board, and download Tera-Term to see the performan
 
 1. For every iteration, it will show the number of ticks used in each layer.
 <p align="center">
-    <img src=https://i.imgur.com/F7boGv8.png>
-</p>
+    <img src=https://user-images.githubusercontent.com/61946472/191679155-3b0eee9d-a531-4f59-828c-fab1c67160dc.png>
+ </p>
 2. After passing through the whole model, it would compute a total number of ticks and time.
 <p align="center">
-    <img src=https://i.imgur.com/WawCR45.png>
+    <img src=https://user-images.githubusercontent.com/61946472/191679217-60a5067e-880d-4d70-b8c0-1ab549414911.png>
 </p>
 3. After all 50 images are tested, it would show the accuracy of the model.
 <p align="center">
-    <img src=https://i.imgur.com/gUMKICs.png>
+    <img src=https://user-images.githubusercontent.com/61946472/191679654-78d0dd25-0482-4628-8bd4-cc25f220204e.png>
 </p>
-
 
 
 
