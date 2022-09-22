@@ -112,8 +112,5 @@ Copy the binary file onto the board, and download Tera-Term to see the performan
 </p>
 3. After all 50 images are tested, it would show the accuracy of the model.
 <p align="center">
-    <img src=https://user-images.githubusercontent.com/61946472/191679654-78d0dd25-0482-4628-8bd4-cc25f220204e.png>
+    <img src=https://user-images.githubusercontent.com/61946472/191679783-d5eca440-3839-475a-8af5-5db969606514.png>
 </p>
-
-
-
