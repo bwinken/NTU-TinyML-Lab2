@@ -29,8 +29,8 @@ In LAB2, we deploy a pretrained image recognition model onto STM32H747. The inpu
 1. Required packages are in requirements.txt. 
 
     ```
-    $ git config --global user.name <your name> 
-    $ git config --global user.email <your email>
+    git config --global user.name <your name> 
+    git config --global user.email <your email>
     ```
 We need to clone some packages from git, so need to set the configuration.
 
@@ -38,10 +38,10 @@ We need to clone some packages from git, so need to set the configuration.
 1. Downloaded files from github : 
 
     ```
-    $ git clone https://github.com/bwinken/NTU-TinyML-Lab2.git
+    git clone https://github.com/bwinken/NTU-TinyML-Lab2.git
     ```
     ```
-    $ cd NTU-TinyML-Lab2/LAB2
+    cd NTU-TinyML-Lab2/LAB2
     ```
 
 
@@ -49,10 +49,11 @@ We need to clone some packages from git, so need to set the configuration.
 Since the package is for STM32F746NG, we need to do some modification on 'setup.sh' to download the right BSPs. Also, several header files need to include the support functions to STM32H747I.
 1. Add executable permission
    ```
-   $ chmod u+x clean.sh
-   $ chmod u+x generate_cmake_files.sh
+   chmod u+x clean.sh
    ```
-
+   ```
+   chmod u+x generate_cmake_files.sh
+   ```
 2. You cna run copy `747setup.sh` in `NTU-TinyML-Lab2/LAB2` to setup the building environment or write `setup.sh` file on yourself.
 
    ```
