@@ -18,7 +18,7 @@
  */
 
 #include "mbed-os/mbed.h"
-#include "mbed-os/targets/TARGET_STM/TARGET_STM32F7/STM32Cube_FW/STM32F7xx_HAL_Driver/stm32f7xx_hal.h"
+#include "mbed-os/targets/TARGET_STM/TARGET_STM32H7/STM32Cube_FW/STM32H7xx_HAL_Driver/stm32h7xx_hal.h"
 #include "image_recognition/image_provider.h"
 #include "image_recognition/image_recognition_model.h"
 #include "image_recognition/stm32f746_discovery/display_util.h"
