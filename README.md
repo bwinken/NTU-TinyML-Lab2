@@ -10,19 +10,19 @@ In LAB2, we deploy a pretrained image recognition model onto STM32H747. The inpu
 1. Install [mbed-tools](https://os.mbed.com/docs/mbed-os/v6.15/build-tools/install-and-set-up.html) by pip :
    
    ```
-    $ pip install mbed-tools
+    pip install mbed-tools
     ```
 
 2. Install [GCC_ARM](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/downloads) by :
 
     ```
-    $ sudo apt-get install gcc-arm-none-eabi
+    sudo apt-get install gcc-arm-none-eabi
     ```
 
 3. Install [Ninja](https://installati.one/ubuntu/20.04/ninja-build/) by :
 
     ```
-    $ sudo apt-get install ninja-build
+    sudo apt-get install ninja-build
     ``` 
 
 ### Setting git config 
@@ -57,28 +57,29 @@ Since the package is for STM32F746NG, we need to do some modification on 'setup.
 2. You cna run copy `747setup.sh` in `NTU-TinyML-Lab2/LAB2` to setup the building environment or write `setup.sh` file on yourself.
 
    ```
-   $ bash ./747setup.sh
+   bash ./747setup.sh
    ```
 
 ### Modify files
 - `main.cpp`          (in ./image_recognition)
 - `display_util.cc`   (in ./image_recognition/stm32f746_discovery)
 - `image_provider.cc` (in ./image_recognition/stm32f746_discovery)
-1. `main.cpp` 
-
+1. `main.cpp (Line21)` 
     ```
-    (Line21) #include "mbed-os/targets/TARGET_STM/TARGET_STM32H7/STM32Cube_FW/STM32H7xx_HAL_Driver/stm32h7xx_hal.h"
+    #include "mbed-os/targets/TARGET_STM/TARGET_STM32H7/STM32Cube_FW/STM32H7xx_HAL_Driver/stm32h7xx_hal.h"
     ```
-2. `display_util.cc`
-
+2. `display_util.cc (Line23) `
     ```
-    (Line27-30) Change variable : hDcmiHandler ->hdcmi_discovery`
-    (Line23)  #include  "BSP/Drivers/BSP/STM32H747I-Discovery/stm32h747i_discovery_lcd.h"
+    #include  "BSP/Drivers/BSP/STM32H747I-Discovery/stm32h747i_discovery_lcd.h"
     ```
-3. `image_provider.cc` 
+3. `display_util.cc (Line27-30) `
+   ```
+   Change variable : hDcmiHandler ->hdcmi_discovery`
+   ```
+4. `image_provider.cc (Line21)` 
     
     ```
-    (Line21) #include "BSP/Drivers/BSP/STM32H747I-Discovery/stm32h747i_discovery_camera.h"
+    #include "BSP/Drivers/BSP/STM32H747I-Discovery/stm32h747i_discovery_camera.h"
     ```
 
 ### Run Inference
