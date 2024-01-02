@@ -24,10 +24,10 @@
 
 extern "C" {
 // defined in stm32746g_discovery_camera.c
-extern DCMI_HandleTypeDef hDcmiHandler;
-void DCMI_IRQHandler(void) { HAL_DCMI_IRQHandler(&hDcmiHandler); }
+extern DCMI_HandleTypeDef hdcmi_discovery;
+void DCMI_IRQHandler(void) { HAL_DCMI_IRQHandler(&hdcmi_discovery); }
 void DMA2_Stream1_IRQHandler(void) {
-  HAL_DMA_IRQHandler(hDcmiHandler.DMA_Handle);
+  HAL_DMA_IRQHandler(hdcmi_discovery.DMA_Handle);
 }
 }
 

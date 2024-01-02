@@ -18,7 +18,7 @@
  */
 
 #include "image_recognition/image_provider.h"
-#include "BSP/Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_camera.h"
+#include "BSP/Drivers/BSP/STM32H747I-Discovery/stm32h747i_discovery_camera.h"
 
 TfLiteStatus InitCamera(tflite::ErrorReporter* error_reporter) {
   if (BSP_CAMERA_Init(RESOLUTION_R160x120) != CAMERA_OK) {
