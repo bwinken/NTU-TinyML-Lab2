@@ -20,7 +20,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include "image_recognition/stm32f746_discovery/display_util.h"
-#include "BSP/Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_lcd.h"
+#include  "BSP/Drivers/BSP/STM32H747I-Discovery/stm32h747i_discovery_lcd.h"
 
 extern "C" {
 // defined in stm32746g_discovery_camera.c
